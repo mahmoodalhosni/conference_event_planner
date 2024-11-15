@@ -1,4 +1,5 @@
 // venueSlice.js
+// It seems like the name: "venue" is the name of the reducer that wil be imported to the store. It's an encompassing name for the reducers inside.
 import { createSlice } from "@reduxjs/toolkit";
 
 export const venueSlice = createSlice({
@@ -37,7 +38,8 @@ export const venueSlice = createSlice({
   
   ],
   reducers: {
-   
+   //incrementQuantity first checks if the item exists in the state at the provided index. If the item exists and it's an Auditorium Hall with a quantity greater than or equal to 3, it returns early without modifying the state.Otherwise, it increments the quantity of the item by one.
+
     incrementQuantity: (state, action) => {
       const { payload: index } = action;
       if (state[index]) {
@@ -46,6 +48,8 @@ export const venueSlice = createSlice({
         state[index].quantity++;
       }
     },
+    //decrementQuantity first checks if the item exists in the state at the provided index and if its quantity is greater than 0. If both conditions are met, the quantity of the item will be decreased by one.
+
     decrementQuantity: (state, action) => {
       const { payload: index } = action;
       if (state[index] && state[index].quantity > 0) {
